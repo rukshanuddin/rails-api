@@ -22,7 +22,14 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # processes).
 #
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
+if /darwin/ =~ RUBY_PLATFORM
+  before_fork do
+    require 'fiddle'
+    # Dynamically load Foundation.framework, ~implicitly~ initialising
+    # the Objective-C runtime before any forking happens in Puma
+    Fiddle.dlopen '/System/Library/Frameworks/Foundation.framework/Foundation'
+  end
+end
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
 # before forking the application. This takes advantage of Copy On Write

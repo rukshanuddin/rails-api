@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1'
+gem 'rails'
 
 # Database, server, security
 gem 'pg'
@@ -8,7 +8,7 @@ gem 'puma'
 gem 'foreman'
 gem 'rack-cors'
 gem 'rack-attack'
-
+gem 'fiddle'
 # Serialization
 gem 'active_model_serializers'
 
@@ -27,7 +27,7 @@ gem 'sidekiq'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_bot'
 end
 
 group :development do
@@ -45,4 +45,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-ruby '2.4.2'
+ruby '2.6.3'
